@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div id="content"></div>
 
     <script>
-        fetch("https://ci-swapi.herokuapp.com/api/")
-        .then(response => response.json())
+        // fetch("https://ci-swapi.herokuapp.com/api/")
+        // .then(response => response.json())                or .text()
         // .then(data => {
         //     document.getElementById("content").innerText = data;
         // })
-        .then(data => {
-            document.getElementById("content").innerText = data.people;
-        })
-        .catch((e) => {
-            console.error("Error: ", e);
-        });
+        // // .then(data => {
+        // //     document.getElementById("content").innerText = data.people;
+        // // })
+        // .catch((e) => {
+        //     console.error("Error: ", e);
+        // });
+
+        fetch("https://ci-swapi.herokuapp.com/api/")
+            .then(response => response.text())
+            .then(data => displayData(data))
+            .catch((e) => {
+                console.error("Error: ", e);
+            });
+
+        function displayData(data) {
+            document.getElementById("content").innerText = data;
+        }
     </script>
 </body>
+
 </html>
